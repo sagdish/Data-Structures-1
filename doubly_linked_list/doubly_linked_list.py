@@ -93,14 +93,20 @@ class DoublyLinkedList:
             return None
         
         value = self.tail.value
-        if self.head == self.tail:
-            self.head = None
-            self.tail = None
-        if self.tail:
-            self.tail = self.tail.prev
-            self.delete(self.tail)
+        self.delete(self.tail)
         self.length -= 1
         return value
+
+        # this do not work in stack implementaion, had to rewrite(code above)
+        # value = self.tail.value
+        # if self.head == self.tail:
+        #     self.head = None
+        #     self.tail = None
+        # if self.tail:
+        #     self.tail = self.tail.prev
+        #     self.delete(self.tail)
+        # self.length -= 1
+        # return value
 
     """Removes the input node from its current spot in the 
     List and inserts it as the new head node of the List."""
