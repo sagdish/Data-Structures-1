@@ -9,6 +9,11 @@ This part of the project comprises two days:
 2. Implement the `in_order_print`, `bft_print`, and `dft_print` methods
    on the BSTNode class.
 """
+import sys
+sys.path.append('../doubly_linked_list')
+# print(sys.path)
+from doubly_linked_list import DoublyLinkedList
+
 class BSTNode:
     def __init__(self, value):
         self.value = value
@@ -17,12 +22,33 @@ class BSTNode:
 
     # Insert the given value into the tree
     def insert(self, value):
-        pass
+        if value >= self.value:
+            if self.right:
+                self.right.insert(value)
+            else:
+                new_node = BSTNode(value)
+                self.right = new_node
+        else:
+            if self.left:
+                self.left.insert(value)
+            else:
+                new_node = BSTNode(value)
+                self.left = new_node
 
     # Return True if the tree contains the value
     # False if it does not
     def contains(self, target):
-        pass
+        if self.value == target:
+            return True
+        
+        elif target > self.value:
+            if self.right:
+                return self.right.contains(target)
+            else:
+                return False
+        
+        else:
+            return self.left.contains(target) if self.left else False
 
     # Return the maximum value found in the tree
     def get_max(self):

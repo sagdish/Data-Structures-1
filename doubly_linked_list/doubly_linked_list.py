@@ -94,7 +94,7 @@ class DoublyLinkedList:
         
         value = self.tail.value
         self.delete(self.tail)
-        self.length -= 1
+        # self.length -= 1
         return value
 
         # this do not work in stack implementaion, had to rewrite(code above)
@@ -131,7 +131,8 @@ class DoublyLinkedList:
         self.length -= 1
         # self.delete(node)
 
-        if self.head == self.tail:
+        # if self.head == self.tail:
+        if node == self.head and node == self.tail:
             self.head = None
             self.tail = None
         
